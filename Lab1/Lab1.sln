@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab1", "Lab1.csproj", "{CA41014C-5A13-4659-9E11-C2FCE92B578A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomGenerics", "CustomGenerics.csproj", "{CA41014C-5A13-4659-9E11-C2FCE92B578A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegerTree", "..\IntegerTree\IntegerTree.csproj", "{388A1D24-7BE4-4EB9-8A03-6E5E7911091E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IntegerTree", "..\IntegerTree\IntegerTree.csproj", "{388A1D24-7BE4-4EB9-8A03-6E5E7911091E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "..\API\API.csproj", "{9DFF567F-3AF1-4A65-ADFE-44AE3EB807C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API", "..\API\API.csproj", "{9DFF567F-3AF1-4A65-ADFE-44AE3EB807C2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
