@@ -42,7 +42,6 @@ namespace Lab1
             }
             NodeOrder();
         }
-
         public void NodeOrder()
         {
             T aux;
