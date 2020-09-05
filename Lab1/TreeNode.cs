@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace Lab1
@@ -39,5 +40,13 @@ namespace Lab1
                 }
             }
         }
+       /* public void NodeOrder(T []NodeValue, T value)
+        {
+            for (int i = 0; i < NodeValues.Length; i++)
+            {
+                
+            }
+        }*/
+      
     }
 }
