@@ -34,23 +34,37 @@ namespace Lab1
         {
             for (int i = 0; i < NodeValues.Length; i++)
             {
-                if (NodeValues[i] != null)
+                if (NodeValues[i] != null) //Revisar lógica (NodeValues[i] == null)? 
                 {
                     NodeValues[i] = value;
+                    //i = NodeValues.Length;
                 }
             }
+            NodeOrder();
         }
-       public void NodeOrder(T []NodeValue, T value)
+
+        public void NodeOrder()
         {
             T aux;
             for (int i = 0; i < NodeValues.Length - 1; i++)
             {
-                if (value.CompareTo(NodeValue[i]) > 0)
-                {
-                    aux = NodeValue[i];
-                    NodeValue[i] = value;
-                    value = aux;
-                }
+               for (int j = i+1 ; j < NodeValues.Length; j++)
+			   {
+                    if(this[j] == null)
+                    {
+                        i = NodeValues.Length -1;
+                        j = NodeValues.Length;
+                    }
+                    else
+                    {
+                        if(this[i].CompareTo(this[j]) == 1)
+                        {
+                        aux = this[i];
+                        this[i] = this[j];
+                        this[j] = aux;
+                        }
+                    } 
+			   }
             }
         }
       
