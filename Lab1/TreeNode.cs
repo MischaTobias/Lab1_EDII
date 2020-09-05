@@ -40,13 +40,19 @@ namespace Lab1
                 }
             }
         }
-       /* public void NodeOrder(T []NodeValue, T value)
+       public void NodeOrder(T []NodeValue, T value)
         {
-            for (int i = 0; i < NodeValues.Length; i++)
+            T aux;
+            for (int i = 0; i < NodeValues.Length - 1; i++)
             {
-                
+                if (value.CompareTo(NodeValue[i]) > 0)
+                {
+                    aux = NodeValue[i];
+                    NodeValue[i] = value;
+                    value = aux;
+                }
             }
-        }*/
+        }
       
     }
 }
