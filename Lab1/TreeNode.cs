@@ -37,11 +37,12 @@ namespace Lab1
                 if (NodeValues[i] != null) //Revisar lógica (NodeValues[i] == null)? 
                 {
                     NodeValues[i] = value;
-                    //i = NodeValues.Length;
+                    i = NodeValues.Length;
                 }
             }
             NodeOrder();
         }
+
         public void NodeOrder()
         {
             T aux;
@@ -49,18 +50,18 @@ namespace Lab1
             {
                for (int j = i+1 ; j < NodeValues.Length; j++)
 			   {
-                    if(this[j] == null)
+                    if(NodeValues[j] == null)
                     {
                         i = NodeValues.Length -1;
                         j = NodeValues.Length;
                     }
                     else
                     {
-                        if(this[i].CompareTo(this[j]) == 1)
+                        if(NodeValues[i].CompareTo(NodeValues[j]) > 0)
                         {
-                        aux = this[i];
-                        this[i] = this[j];
-                        this[j] = aux;
+                            aux = NodeValues[i];
+                            NodeValues[i] = NodeValues[j];
+                            NodeValues[j] = aux;
                         }
                     } 
 			   }
