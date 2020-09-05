@@ -46,7 +46,7 @@ namespace Lab1
 
         public T Search(T value)
         {
-            return Get(value, Root) ?? default;
+            return Get(value, Root);
         }
 
         private T Get(T value, TreeNode<T> node)
