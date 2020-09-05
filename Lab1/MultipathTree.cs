@@ -11,10 +11,9 @@ namespace Lab1
         private int TreeOrder;
         private TreeNode<T> Root;
 
-        public MultipathTree(int order, T value)
+        public MultipathTree(int order)
         {
             TreeOrder = order;
-            TreeNode<T> newNode = new TreeNode<T>(value, order);
         }
 
         public void AddValue(T value)
@@ -24,23 +23,30 @@ namespace Lab1
 
         private void Insert(T value, TreeNode<T> node)
         {
-            if (node.HasSpace())
+            if (node != null)
             {
-                node.AddValue(value);
+                if (node.HasSpace())
+                {
+                    node.AddValue(value);
+                }
+                else
+                {
+                    for (int i = 0; i < TreeOrder - 1; i++)
+                    {
+                        if (value.CompareTo(node.NodeValues[i]) < 0)
+                        {
+                            Insert(value, node.SubTrees[i]);
+                        }
+                        else if (value.CompareTo(node.NodeValues[i]) > 0)
+                        {
+                            Insert(value, node.SubTrees[i + 1]);
+                        }
+                    }
+                }
             }
             else
             {
-                for (int i = 0; i < TreeOrder - 1; i++)
-                {
-                    if (value.CompareTo(node.NodeValues[i]) < 0)
-                    {
-                        Insert(value, node.SubTrees[i]);
-                    }
-                    else if (value.CompareTo(node.NodeValues[i]) > 0)
-                    {
-                        Insert(value, node.SubTrees[i + 1]);
-                    }
-                }
+                node = new TreeNode<T>(value, TreeOrder);
             }
         }
 
