@@ -34,7 +34,7 @@ namespace Lab1
         {
             for (int i = 0; i < NodeValues.Length; i++)
             {
-                if (NodeValues[i] != null) //Revisar lógica (NodeValues[i] == null)? 
+                if (NodeValues[i] == null) 
                 {
                     NodeValues[i] = value;
                     i = NodeValues.Length;
