@@ -37,6 +37,32 @@ namespace IntegerTree
                     }
 
                 } while (hasMoreValues);
+
+                Order:
+                Console.Clear();
+                Console.WriteLine("Por favor ingrese el número correspondiente al tipo de recorrido que desea realizar en el árbol");
+                Console.WriteLine("1. PreOrder");
+                Console.WriteLine("2. InOrder");
+                Console.WriteLine("3. PostOrder");
+                try
+                {
+                    switch (Convert.ToInt32(Console.ReadLine()))
+                    {
+                        case 0:
+                            break;
+                        case 1:
+                            break;
+                        case 2:
+                            break;
+                    }
+                }
+                catch
+                {
+                    Console.WriteLine("Por favor ingrese un recorrido válido");
+                    Console.ReadLine();
+                    goto Order;
+                    throw;
+                }
             }
             catch
             {
