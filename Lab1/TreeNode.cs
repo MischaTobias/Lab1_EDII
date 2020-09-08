@@ -10,6 +10,7 @@ namespace Lab1
     {
         public T[] NodeValues;
         public TreeNode<T>[] SubTrees;
+        private List<T> ListaOrder = new List<T>();
 
         public bool HasSpace()
         {
@@ -34,7 +35,7 @@ namespace Lab1
         {
             for (int i = 0; i < NodeValues.Length; i++)
             {
-                if (NodeValues[i] != null) //Revisar lógica (NodeValues[i] == null)? 
+                if (NodeValues[i] == null) 
                 {
                     NodeValues[i] = value;
                     i = NodeValues.Length;
@@ -67,6 +68,5 @@ namespace Lab1
 			   }
             }
         }
-      
     }
 }

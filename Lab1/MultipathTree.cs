@@ -10,6 +10,7 @@ namespace Lab1
     {
         private int TreeOrder;
         private TreeNode<T> Root;
+        private List<T> OrderList = new List<T>();
 
         public MultipathTree(int order)
         {
@@ -52,7 +53,7 @@ namespace Lab1
 
         public T Search(T value)
         {
-            return Get(value, Root) ?? default;
+            return Get(value, Root);
         }
 
         private T Get(T value, TreeNode<T> node)
@@ -75,41 +76,86 @@ namespace Lab1
             return default;
         }
 
-        //public List<T> GetPathing(int pathingType)
-        //{
-        //    switch (pathingType)
-        //    {
-        //        case 0:
-        //            break;
-        //        case 1:
-        //            break;
-        //        case 2:
-        //            break;
-        //    }
-        //    return new List<T>();
-        //}
+        public List<T> GetPathing(int PathingType)
+        {
+            OrderList.Clear();
+            switch (PathingType)
+            {
+                case 0:
+                    PreOrder(Root);
+                    break;
+                case 1:
+                    InOrder(Root);
+                    break;
+                case 2:
+                    PostOrder(Root);
+                    break;
+            }
+            return OrderList;
+        }
 
-        //private List<T> PreOrder(TreeNode<T> node)
-        //{
-        //    List<T> Values = new List<T>();
-        //    for (int i = 0; i < node.NodeValues.Length; i++)
-        //    {
-        //        if (node.NodeValues[i] != null)
-        //        {
-        //            Values.Add(node.NodeValues[i]);
-        //        }
-        //    }
-        //    return new List<T>();
-        //}
+        private void PreOrder(TreeNode<T> node)
+        {
+            for (int i = 0; i < node.NodeValues.Length; i++)
+            {
+                if (node.NodeValues[i] != null)
+                {
+                    OrderList.Add(node.NodeValues[i]);
+                }
+            }
+            for (int j = 0; j < node.NodeValues.Length + 1; j++)
+            {
+                if (node.SubTrees[j] != null)
+                {
+                    PreOrder(node.SubTrees[j]);
+                }
+            }
+        }
 
-        //private List<T> InOrder(TreeNode<T> node)
-        //{
-        //    return new List<T>();
-        //}
+        private void InOrder(TreeNode<T> node)
+        {
+            for (int i = 0; i < node.NodeValues.Length; i++)
+            {
+                if (i == 0)
+                {
+                    if (node.SubTrees[i] != null)
+                    {
+                        InOrder(node.SubTrees[i]);
+                    }
+                }
+                if (node.NodeValues[i] != null)
+                {
+                    OrderList.Add(node.NodeValues[i]);
+                    if (node.SubTrees[i + 1] != null)
+                    {
+                        InOrder(node.SubTrees[i + 1]);
+                    }
+                }
+                else
+                {
+                    i = node.NodeValues.Length;
+                }
+            }
+            return OrderList;
+        }
 
-        //private List<T> PostOrder(TreeNode<T> node)
-        //{
-        //    return new List<T>();
-        //}
+        private void PostOrder(TreeNode<T> node)
+        {
+            for (int j = 0; j < node.NodeValues.Length + 1; j++)
+            {
+                if (node.SubTrees[j] != null)
+                {
+                    PreOrder(node.SubTrees[j]);
+                }
+            }
+            for (int i = 0; i < node.NodeValues.Length; i++)
+            {
+                if (node.NodeValues[i] != null)
+                {
+                    OrderList.Add(node.NodeValues[i]);
+                }
+            }
+            return OrderList;
+        }
     }
 }
