@@ -78,16 +78,13 @@ namespace Lab1
                 case 0:
                     PreOrder(Root);
                     break;
-
                 case 1:
                     InOrder(Root);
                     break;
-
                 case 2:
                     PostOrder(Root);
                     break;
             }
-
             return OrderList;
         }
 
