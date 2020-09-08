@@ -10,7 +10,7 @@ namespace Lab1
     {
         private int TreeOrder;
         private TreeNode<T> Root;
-        private List<T> ListaOrden = new List<T>();
+        private List<T> OrderList = new List<T>();
 
         public MultipathTree(int order, T value)
         {
@@ -70,33 +70,34 @@ namespace Lab1
             return default;
         }
 
-        //public List<T> GetPathing(int pathingType)
-        //{
-        //    switch (pathingType)
-        //    {
-        //        case 0:
-        //            break;
-        //        case 1:
-        //            break;
-        //        case 2:
-        //            break;
-        //    }
-        //    return new List<T>();
-        //}
-
-        public List<T> ObtListaPreOrder()
+        public List<T> GetPathing(int PathingType)
         {
-            ListaOrden.Clear();
-            PreOrder(Root);
-            return ListaOrden;
+            OrderList.Clear();
+            switch (PathingType)
+            {
+                case 0:
+                    PreOrder(Root);
+                    break;
+
+                case 1:
+                    InOrder(Root);
+                    break;
+
+                case 2:
+                    PostOrder(Root);
+                    break;
+            }
+
+            return OrderList;
         }
-        private List<T> PreOrder(TreeNode<T> node)
+
+        private void PreOrder(TreeNode<T> node)
         {
             for (int i = 0; i < node.NodeValues.Length; i++)
             {
                 if (node.NodeValues[i] != null)
                 {
-                    ListaOrden.Add(node.NodeValues[i]);
+                    OrderList.Add(node.NodeValues[i]);
                 }
             }
             for (int j = 0; j < node.NodeValues.Length + 1; j++)
@@ -106,16 +107,9 @@ namespace Lab1
                     PreOrder(node.SubTrees[j]);
                 }
             }
-            return ListaOrden;
         }
 
-        public List<T> ObtListaInOrder()
-        {
-            ListaOrden.Clear();
-            InOrder(Root);
-            return ListaOrden;
-        }
-        private List<T> InOrder(TreeNode<T> node)
+        private void InOrder(TreeNode<T> node)
         {
             for (int i = 0; i < node.NodeValues.Length; i++)
             {
@@ -128,7 +122,7 @@ namespace Lab1
                 }
                 if (node.NodeValues[i] != null)
                 {
-                    ListaOrden.Add(node.NodeValues[i]);
+                    OrderList.Add(node.NodeValues[i]);
                     if (node.SubTrees[i + 1] != null)
                     {
                         InOrder(node.SubTrees[i + 1]);
@@ -138,19 +132,11 @@ namespace Lab1
                 {
                     i = node.NodeValues.Length;
                 }
-
             }
-
-            return ListaOrden;
+            return OrderList;
         }
 
-        public List<T> ObtListaPostOrder()
-        {
-            ListaOrden.Clear();
-            PostOrder(Root);
-            return ListaOrden;
-        }
-        private List<T> PostOrder(TreeNode<T> node)
+        private void PostOrder(TreeNode<T> node)
         {
             for (int j = 0; j < node.NodeValues.Length + 1; j++)
             {
@@ -163,10 +149,10 @@ namespace Lab1
             {
                 if (node.NodeValues[i] != null)
                 {
-                    ListaOrden.Add(node.NodeValues[i]);
+                    OrderList.Add(node.NodeValues[i]);
                 }
             }
-            return ListaOrden;
+            return OrderList;
         }
     }
 }
