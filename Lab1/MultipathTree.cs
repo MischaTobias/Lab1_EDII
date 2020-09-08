@@ -36,18 +36,67 @@ namespace Lab1
                     {
                         if (value.CompareTo(node.NodeValues[i]) < 0)
                         {
-                            Insert(value, node.SubTrees[i]);
+                            if (i - 1 > -1)
+                            {
+                                if (value.CompareTo(node.NodeValues[i - 1]) > 0)
+                                {
+                                    if (node.SubTrees[i] == null)
+                                    {
+                                        node.SubTrees[i] = new TreeNode<T>(value, TreeOrder);
+                                    }
+                                    else
+                                    {
+                                        Insert(value, node.SubTrees[i]);
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                if (node.SubTrees[i] == null)
+                                {
+                                    node.SubTrees[i] = new TreeNode<T>(value, TreeOrder);
+                                }
+                                else
+                                {
+                                    Insert(value, node.SubTrees[i]);
+                                }
+                            }
                         }
                         else if (value.CompareTo(node.NodeValues[i]) > 0)
                         {
-                            Insert(value, node.SubTrees[i + 1]);
+                            if (i + 1 < node.NodeValues.Length)
+                            {
+                                if (value.CompareTo(node.NodeValues[i + 1]) < 0)
+                                {
+                                    if (node.SubTrees[i + 1] == null)
+                                    {
+                                        node.SubTrees[i + 1] = new TreeNode<T>(value, TreeOrder);
+                                    }
+                                    else
+                                    {
+                                        Insert(value, node.SubTrees[i + 1]);
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                if (node.SubTrees[i + 1] == null)
+                                {
+                                    node.SubTrees[i + 1] = new TreeNode<T>(value, TreeOrder);
+                                }
+                                else
+                                {
+                                    Insert(value, node.SubTrees[i + 1]);
+                                }
+                            }
+                            
                         }
                     }
                 }
             }
-            else
+            else if (node == Root)
             {
-                node = new TreeNode<T>(value, TreeOrder);
+                Root = new TreeNode<T>(value, TreeOrder);
             }
         }
 
@@ -136,7 +185,6 @@ namespace Lab1
                     i = node.NodeValues.Length;
                 }
             }
-            return OrderList;
         }
 
         private void PostOrder(TreeNode<T> node)
@@ -155,7 +203,6 @@ namespace Lab1
                     OrderList.Add(node.NodeValues[i]);
                 }
             }
-            return OrderList;
         }
     }
 }

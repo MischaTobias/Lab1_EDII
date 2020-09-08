@@ -12,16 +12,17 @@ namespace Lab1
         public TreeNode<T>[] SubTrees;
         private List<T> ListaOrder = new List<T>();
 
+        //https://stackoverflow.com/questions/65351/null-or-default-comparison-of-generic-argument-in-c-sharp
         public bool HasSpace()
         {
             foreach (var value in NodeValues)
             {
-                if (value == null)
+                if (EqualityComparer<T>.Default.Equals(value, default(T)))
                 {
-                    return false;
+                    return true;
                 }
             }
-            return true;
+            return false;
         }
 
         public TreeNode(T value, int order)
@@ -35,7 +36,7 @@ namespace Lab1
         {
             for (int i = 0; i < NodeValues.Length; i++)
             {
-                if (NodeValues[i] == null) 
+                if (EqualityComparer<T>.Default.Equals(NodeValues[i], default(T))) 
                 {
                     NodeValues[i] = value;
                     i = NodeValues.Length;
