@@ -48,6 +48,7 @@ namespace Lab1
                                     {
                                         Insert(value, node.SubTrees[i]);
                                     }
+                                    i = TreeOrder;
                                 }
                             }
                             else
@@ -60,6 +61,7 @@ namespace Lab1
                                 {
                                     Insert(value, node.SubTrees[i]);
                                 }
+                                i = TreeOrder;
                             }
                         }
                         else if (value.CompareTo(node.NodeValues[i]) > 0)
@@ -76,6 +78,7 @@ namespace Lab1
                                     {
                                         Insert(value, node.SubTrees[i + 1]);
                                     }
+                                    i = TreeOrder;
                                 }
                             }
                             else
@@ -88,6 +91,7 @@ namespace Lab1
                                 {
                                     Insert(value, node.SubTrees[i + 1]);
                                 }
+                                i = TreeOrder;
                             }
                             
                         }
