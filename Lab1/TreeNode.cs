@@ -10,6 +10,7 @@ namespace Lab1
     {
         public T[] NodeValues;
         public TreeNode<T>[] SubTrees;
+        private List<T> ListaOrder = new List<T>();
 
         public bool HasSpace()
         {
@@ -67,6 +68,5 @@ namespace Lab1
 			   }
             }
         }
-      
     }
 }

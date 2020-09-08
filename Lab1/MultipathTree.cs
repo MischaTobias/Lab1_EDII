@@ -10,6 +10,7 @@ namespace Lab1
     {
         private int TreeOrder;
         private TreeNode<T> Root;
+        private List<T> ListaOrden = new List<T>();
 
         public MultipathTree(int order, T value)
         {
@@ -83,27 +84,89 @@ namespace Lab1
         //    return new List<T>();
         //}
 
-        //private List<T> PreOrder(TreeNode<T> node)
-        //{
-        //    List<T> Values = new List<T>();
-        //    for (int i = 0; i < node.NodeValues.Length; i++)
-        //    {
-        //        if (node.NodeValues[i] != null)
-        //        {
-        //            Values.Add(node.NodeValues[i]);
-        //        }
-        //    }
-        //    return new List<T>();
-        //}
+        public List<T> ObtListaPreOrder()
+        {
+            ListaOrden.Clear();
+            PreOrder(Root);
+            return ListaOrden;
+        }
+        private List<T> PreOrder(TreeNode<T> node)
+        {
+            for (int i = 0; i < node.NodeValues.Length; i++)
+            {
+                if (node.NodeValues[i] != null)
+                {
+                    ListaOrden.Add(node.NodeValues[i]);
+                }
+            }
+            for (int j = 0; j < node.NodeValues.Length + 1; j++)
+            {
+                if (node.SubTrees[j] != null)
+                {
+                    PreOrder(node.SubTrees[j]);
+                }
+            }
+            return ListaOrden;
+        }
 
-        //private List<T> InOrder(TreeNode<T> node)
-        //{
-        //    return new List<T>();
-        //}
+        public List<T> ObtListaInOrder()
+        {
+            ListaOrden.Clear();
+            InOrder(Root);
+            return ListaOrden;
+        }
+        private List<T> InOrder(TreeNode<T> node)
+        {
+            for (int i = 0; i < node.NodeValues.Length; i++)
+            {
+                if (i == 0)
+                {
+                    if (node.SubTrees[i] != null)
+                    {
+                        InOrder(node.SubTrees[i]);
+                    }
+                }
+                if (node.NodeValues[i] != null)
+                {
+                    ListaOrden.Add(node.NodeValues[i]);
+                    if (node.SubTrees[i + 1] != null)
+                    {
+                        InOrder(node.SubTrees[i + 1]);
+                    }
+                }
+                else
+                {
+                    i = node.NodeValues.Length;
+                }
 
-        //private List<T> PostOrder(TreeNode<T> node)
-        //{
-        //    return new List<T>();
-        //}
+            }
+
+            return ListaOrden;
+        }
+
+        public List<T> ObtListaPostOrder()
+        {
+            ListaOrden.Clear();
+            PostOrder(Root);
+            return ListaOrden;
+        }
+        private List<T> PostOrder(TreeNode<T> node)
+        {
+            for (int j = 0; j < node.NodeValues.Length + 1; j++)
+            {
+                if (node.SubTrees[j] != null)
+                {
+                    PreOrder(node.SubTrees[j]);
+                }
+            }
+            for (int i = 0; i < node.NodeValues.Length; i++)
+            {
+                if (node.NodeValues[i] != null)
+                {
+                    ListaOrden.Add(node.NodeValues[i]);
+                }
+            }
+            return ListaOrden;
+        }
     }
 }
