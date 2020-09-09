@@ -15,7 +15,7 @@ namespace Lab1
         public MultipathTree(int order)
         {
             TreeOrder = order;
-        }
+        }  
 
         public void AddValue(T value)
         {

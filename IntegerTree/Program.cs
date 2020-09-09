@@ -16,9 +16,9 @@ namespace IntegerTree
             Console.WriteLine("Por favor ingrese el grado del árbol multicamino");
             try
             {
-                int Order = Convert.ToInt32(Console.ReadLine());
-                MultipathTree<int> MultiPathTree = new MultipathTree<int>(Order);
-                Console.WriteLine($"{Environment.NewLine}Se ha creado un árbol de grado {Order}");
+                int order = Convert.ToInt32(Console.ReadLine());
+                MultipathTree<int> MultiPathTree = new MultipathTree<int>(order);
+                Console.WriteLine($"{Environment.NewLine}Se ha creado un árbol de grado {order}");
                 bool HasMoreValues = true;
                 do
                 {

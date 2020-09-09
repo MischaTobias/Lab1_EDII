@@ -5,13 +5,18 @@ using System.Threading.Tasks;
 
 namespace API.Models
 {
-    public class Movies
+    public class Movies : IComparable
     {
-        string Director { get; set; }
-        double ImdbRating { get; set; }
-        string Genre { get; set; }
-        string ReleaseDate { get; set; } //Verify the dataType
-        int RottenTomatoesRating { get; set; }
-        string Title { get; set; }
+        public string Director { get; set; }
+        public double ImdbRating { get; set; }
+        public string Genre { get; set; }
+        public string ReleaseDate { get; set; } 
+        public int RottenTomatoesRating { get; set; }
+        public string Title { get; set; }
+
+        public int CompareTo(object obj)
+        {
+            return Title.CompareTo(((Movies)obj).Title);
+        }
     }
 }
