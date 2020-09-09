@@ -87,6 +87,7 @@ namespace IntegerTree
                         goto Order;
                         throw;
                     }
+                    Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("¿Quisieras ordenarla de otra manera? | Presione 'Y'. De lo contrario, presione cualquier otra tecla.");
                     if (Console.ReadKey().Key != ConsoleKey.Y)
                     {
