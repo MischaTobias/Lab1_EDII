@@ -26,7 +26,9 @@ namespace IntegerTree
                     Console.WriteLine($"{Environment.NewLine}Por favor ingrese un valor para insertar en el árbol");
                     try
                     {
+                        Console.ForegroundColor = ConsoleColor.Yellow;
                         multipathTree.AddValue(Convert.ToInt32(Console.ReadLine()));
+                        Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine("Si desea insertar otro valor, presione 'Y'. De lo contrario, presione cualquier otra tecla. ");
                         if (Console.ReadKey().Key != ConsoleKey.Y)
                         {
@@ -72,7 +74,9 @@ namespace IntegerTree
                         {
                             foreach (var item in ArrayList)
                             {
+                                Console.ForegroundColor = ConsoleColor.Yellow;
                                 Console.WriteLine(item.ToString());
+                                
                             }
                         }
                     }
