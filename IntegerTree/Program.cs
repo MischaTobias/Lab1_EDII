@@ -16,10 +16,10 @@ namespace IntegerTree
             Console.WriteLine("Por favor ingrese el grado del árbol multicamino");
             try
             {
-                int order = Convert.ToInt32(Console.ReadLine());
-                MultipathTree<int> multipathTree = new MultipathTree<int>(order);
-                Console.WriteLine($"{Environment.NewLine}Se ha creado un árbol de grado {order}");
-                bool hasMoreValues = true;
+                int Order = Convert.ToInt32(Console.ReadLine());
+                MultipathTree<int> MultiPathTree = new MultipathTree<int>(Order);
+                Console.WriteLine($"{Environment.NewLine}Se ha creado un árbol de grado {Order}");
+                bool HasMoreValues = true;
                 do
                 {
                     Insert:
@@ -27,12 +27,12 @@ namespace IntegerTree
                     try
                     {
                         Console.ForegroundColor = ConsoleColor.Yellow;
-                        multipathTree.AddValue(Convert.ToInt32(Console.ReadLine()));
+                        MultiPathTree.AddValue(Convert.ToInt32(Console.ReadLine()));
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine("Si desea insertar otro valor, presione 'Y'. De lo contrario, presione cualquier otra tecla. ");
                         if (Console.ReadKey().Key != ConsoleKey.Y)
                         {
-                            hasMoreValues = false;
+                            HasMoreValues = false;
                         }
                     }
                     catch
@@ -42,9 +42,9 @@ namespace IntegerTree
                         goto Insert;
                     }
 
-                } while (hasMoreValues);
+                } while (HasMoreValues);
                 
-                bool hasMoreValues2 = true;
+                bool Pathings = true;
                 do
                 {
                     Order:
@@ -58,15 +58,15 @@ namespace IntegerTree
                         switch (Convert.ToInt32(Console.ReadLine()))
                         {
                             case 1:
-                                ArrayList = multipathTree.GetPathing(0);
+                                ArrayList = MultiPathTree.GetPathing(0);
 
                                 break;
                             case 2:
-                                ArrayList = multipathTree.GetPathing(1);
+                                ArrayList = MultiPathTree.GetPathing(1);
 
                                 break;
                             case 3:
-                                ArrayList = multipathTree.GetPathing(2);
+                                ArrayList = MultiPathTree.GetPathing(2);
 
                                 break;
                         }
@@ -76,7 +76,6 @@ namespace IntegerTree
                             {
                                 Console.ForegroundColor = ConsoleColor.Yellow;
                                 Console.WriteLine(item.ToString());
-                                
                             }
                         }
                     }
@@ -91,12 +90,10 @@ namespace IntegerTree
                     Console.WriteLine("¿Quisieras ordenarla de otra manera? | Presione 'Y'. De lo contrario, presione cualquier otra tecla.");
                     if (Console.ReadKey().Key != ConsoleKey.Y)
                     {
-                        hasMoreValues2 = false;
+                        Pathings = false;
                     }
                 }
-                while (hasMoreValues2);
-
-               
+                while (Pathings);
             }
             catch
             {
