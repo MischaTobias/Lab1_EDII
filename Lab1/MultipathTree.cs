@@ -12,10 +12,9 @@ namespace Lab1
         private TreeNode<T> Root;
         private List<T> OrderList = new List<T>();
 
-        public MultipathTree(int order, T value)
+        public MultipathTree(int order)
         {
             TreeOrder = order;
-            TreeNode<T> newNode = new TreeNode<T>(value, order);
         }
 
         public void AddValue(T value)
@@ -25,23 +24,83 @@ namespace Lab1
 
         private void Insert(T value, TreeNode<T> node)
         {
-            if (node.HasSpace())
+            if (node != null)
             {
-                node.AddValue(value);
-            }
-            else
-            {
-                for (int i = 0; i < TreeOrder - 1; i++)
+                if (node.HasSpace())
                 {
-                    if (value.CompareTo(node.NodeValues[i]) < 0)
+                    node.AddValue(value);
+                }
+                else
+                {
+                    for (int i = 0; i < TreeOrder - 1; i++)
                     {
-                        Insert(value, node.SubTrees[i]);
-                    }
-                    else if (value.CompareTo(node.NodeValues[i]) > 0)
-                    {
-                        Insert(value, node.SubTrees[i + 1]);
+                        if (value.CompareTo(node.NodeValues[i]) < 0)
+                        {
+                            if (i - 1 > -1)
+                            {
+                                if (value.CompareTo(node.NodeValues[i - 1]) > 0)
+                                {
+                                    if (node.SubTrees[i] == null)
+                                    {
+                                        node.SubTrees[i] = new TreeNode<T>(value, TreeOrder);
+                                    }
+                                    else
+                                    {
+                                        Insert(value, node.SubTrees[i]);
+                                    }
+                                    i = TreeOrder;
+                                }
+                            }
+                            else
+                            {
+                                if (node.SubTrees[i] == null)
+                                {
+                                    node.SubTrees[i] = new TreeNode<T>(value, TreeOrder);
+                                }
+                                else
+                                {
+                                    Insert(value, node.SubTrees[i]);
+                                }
+                                i = TreeOrder;
+                            }
+                        }
+                        else if (value.CompareTo(node.NodeValues[i]) > 0)
+                        {
+                            if (i + 1 < node.NodeValues.Length)
+                            {
+                                if (value.CompareTo(node.NodeValues[i + 1]) < 0)
+                                {
+                                    if (node.SubTrees[i + 1] == null)
+                                    {
+                                        node.SubTrees[i + 1] = new TreeNode<T>(value, TreeOrder);
+                                    }
+                                    else
+                                    {
+                                        Insert(value, node.SubTrees[i + 1]);
+                                    }
+                                    i = TreeOrder;
+                                }
+                            }
+                            else
+                            {
+                                if (node.SubTrees[i + 1] == null)
+                                {
+                                    node.SubTrees[i + 1] = new TreeNode<T>(value, TreeOrder);
+                                }
+                                else
+                                {
+                                    Insert(value, node.SubTrees[i + 1]);
+                                }
+                                i = TreeOrder;
+                            }
+                            
+                        }
                     }
                 }
+            }
+            else if (node == Root)
+            {
+                Root = new TreeNode<T>(value, TreeOrder);
             }
         }
 
@@ -92,7 +151,7 @@ namespace Lab1
         {
             for (int i = 0; i < node.NodeValues.Length; i++)
             {
-                if (node.NodeValues[i] != null)
+                if (!(EqualityComparer<T>.Default.Equals(node.NodeValues[i], default(T))))
                 {
                     OrderList.Add(node.NodeValues[i]);
                 }
@@ -117,7 +176,7 @@ namespace Lab1
                         InOrder(node.SubTrees[i]);
                     }
                 }
-                if (node.NodeValues[i] != null)
+                if (!(EqualityComparer<T>.Default.Equals(node.NodeValues[i], default(T))))
                 {
                     OrderList.Add(node.NodeValues[i]);
                     if (node.SubTrees[i + 1] != null)
@@ -125,12 +184,7 @@ namespace Lab1
                         InOrder(node.SubTrees[i + 1]);
                     }
                 }
-                else
-                {
-                    i = node.NodeValues.Length;
-                }
             }
-            return OrderList;
         }
 
         private void PostOrder(TreeNode<T> node)
@@ -144,12 +198,11 @@ namespace Lab1
             }
             for (int i = 0; i < node.NodeValues.Length; i++)
             {
-                if (node.NodeValues[i] != null)
+                if (!(EqualityComparer<T>.Default.Equals(node.NodeValues[i], default(T))))
                 {
                     OrderList.Add(node.NodeValues[i]);
                 }
             }
-            return OrderList;
         }
     }
 }
