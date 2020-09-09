@@ -1,13 +1,17 @@
 ﻿using Lab1;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace IntegerTree
 {
     class Program
     {
+        private static List<int> ArrayList;
+
         static void Main(string[] args)
         {
+
             Begginnig:
             Console.WriteLine("Por favor ingrese el grado del árbol multicamino");
             try
@@ -37,32 +41,57 @@ namespace IntegerTree
                     }
 
                 } while (hasMoreValues);
-
-                Order:
-                Console.Clear();
-                Console.WriteLine("Por favor ingrese el número correspondiente al tipo de recorrido que desea realizar en el árbol");
-                Console.WriteLine("1. PreOrder");
-                Console.WriteLine("2. InOrder");
-                Console.WriteLine("3. PostOrder");
-                try
+                
+                bool hasMoreValues2 = true;
+                do
                 {
-                    switch (Convert.ToInt32(Console.ReadLine()))
+                    Order:
+                    Console.Clear();
+                    Console.WriteLine("Por favor ingrese el número correspondiente al tipo de recorrido que desea realizar en el árbol");
+                    Console.WriteLine("1. PreOrder");
+                    Console.WriteLine("2. InOrder");
+                    Console.WriteLine("3. PostOrder");
+                    try
                     {
-                        case 0:
-                            break;
-                        case 1:
-                            break;
-                        case 2:
-                            break;
+                        switch (Convert.ToInt32(Console.ReadLine()))
+                        {
+                            case 1:
+                                ArrayList = multipathTree.GetPathing(0);
+
+                                break;
+                            case 2:
+                                ArrayList = multipathTree.GetPathing(1);
+
+                                break;
+                            case 3:
+                                ArrayList = multipathTree.GetPathing(2);
+
+                                break;
+                        }
+                        if (ArrayList != null)
+                        {
+                            foreach (var item in ArrayList)
+                            {
+                                Console.WriteLine(item.ToString());
+                            }
+                        }
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Por favor ingrese un recorrido válido");
+                        Console.ReadLine();
+                        goto Order;
+                        throw;
+                    }
+                    Console.WriteLine("¿Quisieras ordenarla de otra manera? | Presione 'Y'. De lo contrario, presione cualquier otra tecla.");
+                    if (Console.ReadKey().Key != ConsoleKey.Y)
+                    {
+                        hasMoreValues2 = false;
                     }
                 }
-                catch
-                {
-                    Console.WriteLine("Por favor ingrese un recorrido válido");
-                    Console.ReadLine();
-                    goto Order;
-                    throw;
-                }
+                while (hasMoreValues2);
+
+               
             }
             catch
             {

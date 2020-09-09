@@ -151,7 +151,7 @@ namespace Lab1
         {
             for (int i = 0; i < node.NodeValues.Length; i++)
             {
-                if (node.NodeValues[i] != null)
+                if (!(EqualityComparer<T>.Default.Equals(node.NodeValues[i], default(T))))
                 {
                     OrderList.Add(node.NodeValues[i]);
                 }
@@ -176,17 +176,13 @@ namespace Lab1
                         InOrder(node.SubTrees[i]);
                     }
                 }
-                if (node.NodeValues[i] != null)
+                if (!(EqualityComparer<T>.Default.Equals(node.NodeValues[i], default(T))))
                 {
                     OrderList.Add(node.NodeValues[i]);
                     if (node.SubTrees[i + 1] != null)
                     {
                         InOrder(node.SubTrees[i + 1]);
                     }
-                }
-                else
-                {
-                    i = node.NodeValues.Length;
                 }
             }
         }
@@ -202,7 +198,7 @@ namespace Lab1
             }
             for (int i = 0; i < node.NodeValues.Length; i++)
             {
-                if (node.NodeValues[i] != null)
+                if (!(EqualityComparer<T>.Default.Equals(node.NodeValues[i], default(T))))
                 {
                     OrderList.Add(node.NodeValues[i]);
                 }
