@@ -193,7 +193,7 @@ namespace Lab1
             {
                 if (node.SubTrees[j] != null)
                 {
-                    PreOrder(node.SubTrees[j]);
+                    PostOrder(node.SubTrees[j]);
                 }
             }
             for (int i = 0; i < node.NodeValues.Length; i++)
