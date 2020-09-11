@@ -18,7 +18,14 @@ namespace API.Models
         {
             if (Title.CompareTo(((Movies)obj).Title) == 0)
             {
-                return Director.CompareTo(((Movies)obj).Director);
+                if (Director.CompareTo(((Movies)obj).Director) == 0)
+                {
+                    return ReleaseDate.CompareTo(((Movies)obj).ReleaseDate);
+                }
+                else
+                {
+                    return Director.CompareTo(((Movies)obj).Director);
+                }
             }
             else
             {

@@ -95,6 +95,10 @@ namespace Lab1
                             }
                             
                         }
+                        else
+                        {
+                            i = (TreeOrder - 1);
+                        }
                     }
                 }
             }
