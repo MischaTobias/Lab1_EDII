@@ -16,7 +16,14 @@ namespace API.Models
 
         public int CompareTo(object obj)
         {
-            return Title.CompareTo(((Movies)obj).Title);
+            if (Title.CompareTo(((Movies)obj).Title) == 0)
+            {
+                return Director.CompareTo(((Movies)obj).Director);
+            }
+            else
+            {
+                return Title.CompareTo(((Movies)obj).Title);
+            }
         }
     }
 }
